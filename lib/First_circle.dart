@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class FirstCircle extends StatelessWidget {
+
+  double height_right_line = 25;
+  double width_right_line = 142;
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(title: Text('Внутренний круг')),
         body: Column(
@@ -78,8 +84,58 @@ class FirstCircle extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      color: Colors.blue,
-                      child: Column(),
+
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius:
+                              BorderRadius.circular(15), // <= No more error here :)
+                              color: Color.fromRGBO(241, 39, 99,1),
+                            ),
+                            margin: EdgeInsets.only( bottom: 15),
+                            height: height_right_line,
+                            width: width_right_line,
+
+
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius:
+                              BorderRadius.circular(15), // <= No more error here :)
+                              color: Color.fromRGBO(172, 251, 2,1),
+                            ),
+                            margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 15),
+                            height: height_right_line,
+                            width: width_right_line,
+                            padding: EdgeInsets.all(15),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius:
+                              BorderRadius.circular(15), // <= No more error here :)
+                              color: Color.fromRGBO(3, 247, 211,1),
+                            ),
+                            margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 15),
+                            height: height_right_line,
+                            width: width_right_line,
+                            padding: EdgeInsets.all(15),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius:
+                              BorderRadius.circular(15), // <= No more error here :)
+                              color: Color.fromRGBO(255, 100, 0,1),
+                            ),
+                            margin: EdgeInsets.only(left: 20.0, right: 20.0),
+                            height: height_right_line,
+                            width: width_right_line,
+                            padding: EdgeInsets.all(15),
+                          )
+                        ],
+                      ),
                     )
 
 
