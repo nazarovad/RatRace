@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:ratrace/StartView/Indicator.dart';
+import 'CustomPageViewScrollPhisics.dart';
 
 class StartView extends StatefulWidget {
   const StartView({super.key, required this.title});
@@ -27,7 +30,7 @@ class _StartViewState extends State<StartView> {
       body: Stack(
         children: [PageView(
           controller: controller,
-          physics: const BouncingScrollPhysics(),
+          physics: const CustomPageViewScrollPhysics(),
           children: _images
               .map((image) => Image.asset(image))
               .toList(),
@@ -37,29 +40,18 @@ class _StartViewState extends State<StartView> {
             });
           },
         ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: 85,
-            child: Opacity(
-              opacity: 1,
-              child: Container(
-                color: Colors.blue,
-                child: Row(children: <Widget>[
-                  Expanded(
-                    child: FlutterLogo(),
-                  ),
-                  Expanded(
-                    child: FlutterLogo(),
-                  ),
-                  Expanded(
-                    child: FlutterLogo(),
-                  ),
-                ],),
-              ),
-            )
-          ),],
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                // color: Colors.red,
+                child: Indicator(controller, 3),
+            )],
+          ),
+        )
+        ],
       )
     );
   }
