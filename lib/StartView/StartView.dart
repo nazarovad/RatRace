@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:gradient_slide_to_act/gradient_slide_to_act.dart';
 import 'CustomPageViewScrollPhisics.dart';
+import '../First_circle.dart';
 
 class StartView extends StatefulWidget {
   const StartView({super.key, required this.title});
@@ -83,20 +83,21 @@ class _StartViewState extends State<StartView> {
               ),
             )
           ),
-          Container(
-            margin: const EdgeInsets.all(20),
-            child: GradientSlideToAct(
-              height: 80,
-              dragableIcon: Icons.arrow_forward,
-              textStyle: const TextStyle(color: Colors.white, fontSize: 15),
-              backgroundColor: Colors.amber,
-              onSubmit:  (){},
-              gradient: const LinearGradient(
-                  begin: Alignment.centerLeft,
-                  colors: [
-                    Colors.amber,
-                    Colors.deepOrangeAccent
-                  ]
+          Center(
+            child: ElevatedButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.black12),
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.amber),
+              ),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FirstCircle()));
+              },
+              child: const Text(
+                'Выбрать',
+                style: TextStyle(
+                  fontSize: 23,
+                  color: Colors.black87
+                ),
               ),
             ),
           ),
