@@ -36,6 +36,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   smooth_page_indicator: ^1.2.0+3
+  sqflite: 2.3.3+1
+  gradient_slide_to_act: ^0.0.2
+
+
 
 dev_dependencies:
   flutter_test:
@@ -63,7 +67,7 @@ flutter:
   assets:
     - assets/image/
     - assets/image/jobs/
-
+    - assets/database/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

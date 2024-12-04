@@ -1,7 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:gradient_slide_to_act/gradient_slide_to_act.dart';
 import 'CustomPageViewScrollPhisics.dart';
 
 class StartView extends StatefulWidget {
@@ -33,6 +36,16 @@ class _StartViewState extends State<StartView> {
     return Scaffold(
       body: ListView(
         children: [
+          Container (
+            margin: const EdgeInsets.only(left: 30, top: 10),
+            child: const Text(
+              'Профессия',
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold
+              ),
+            ),
+          ),
           SizedBox(
             height: 500,
             child: PageView.builder(
@@ -69,6 +82,23 @@ class _StartViewState extends State<StartView> {
                 ),
               ),
             )
+          ),
+          Container(
+            margin: const EdgeInsets.all(20),
+            child: GradientSlideToAct(
+              height: 80,
+              dragableIcon: Icons.arrow_forward,
+              textStyle: const TextStyle(color: Colors.white, fontSize: 15),
+              backgroundColor: Colors.amber,
+              onSubmit:  (){},
+              gradient: const LinearGradient(
+                  begin: Alignment.centerLeft,
+                  colors: [
+                    Colors.amber,
+                    Colors.deepOrangeAccent
+                  ]
+              ),
+            ),
           ),
         ],
       )
