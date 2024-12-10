@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:ratrace/servises/ManagementDataBase.dart';
+
 
 class FirstCircle extends StatefulWidget {
   const FirstCircle({super.key});
@@ -9,6 +11,9 @@ class FirstCircle extends StatefulWidget {
 }
 
 class _FirstCircleState extends State<FirstCircle> {
+  ManagementDataBase managementDataBase = ManagementDataBase('professions.db');
+
+
   double height_right_line = 25;
   double width_right_line = double.maxFinite;
 
@@ -20,8 +25,13 @@ class _FirstCircleState extends State<FirstCircle> {
   double widthAnimateCont = 170;
   double maxWidth = 1.0;
 
+
   @override
   Widget build(BuildContext context) {
+
+    //managementDataBase.copyDatabase();
+    managementDataBase.printDatabase('SELECT name FROM Prof');
+
     return Scaffold(
       appBar: AppBar(title: Text('Внутренний круг')),
       body: Column(
@@ -170,6 +180,7 @@ class _FirstCircleState extends State<FirstCircle> {
               ],
             ),
           ),
+
         ],
       ),
     );
