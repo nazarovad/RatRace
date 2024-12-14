@@ -57,7 +57,7 @@ class _StartViewState extends State<StartView> {
                 margin: const EdgeInsets.all(9),
                 decoration: BoxDecoration (
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.amber,
+                  color: Colors.blue,
                   image: DecorationImage (
                     image: AssetImage(_images[index]),
                     fit: BoxFit.cover
