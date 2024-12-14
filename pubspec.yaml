@@ -38,8 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   smooth_page_indicator: ^1.2.0+3
   sqflite: 2.3.3+1
-  path: ^1.8.3
-  path_provider: ^2.0.14
+
   action_slider: ^0.7.0
 
 
