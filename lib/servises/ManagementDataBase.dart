@@ -50,14 +50,12 @@ class ManagementDataBase {
     }
 
   }
-  Future<void> printDatabase(String request) async {
+  Future<List<Map>> printDatabase(String request) async {
     String path = await getDatabase();
     Database database = await openDatabase(path, version: 1);
-    print("++++++++++++++++++++++++++++++++++++++++++++++++");
-    // print(database.query('sqlite_master'));
     List<Map> list = await database.rawQuery(request);
-    print(list);
-    print(path);
+    await database.close();
+   return list;
   }
 
 
