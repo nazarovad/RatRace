@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:ratrace/servises/ManagementDataBase.dart';
+import 'package:ratrace/FirstCircle/DataPlayer.dart';
 
 
 class FirstCircle extends StatefulWidget {
@@ -11,8 +11,7 @@ class FirstCircle extends StatefulWidget {
 }
 
 class _FirstCircleState extends State<FirstCircle> {
-  ManagementDataBase managementDataBase = ManagementDataBase('professions.db');
-
+  DataPlayer dataPlayer = new DataPlayer('Учитель');
 
   double height_right_line = 25;
   double width_right_line = double.maxFinite;
@@ -28,9 +27,8 @@ class _FirstCircleState extends State<FirstCircle> {
 
   @override
   Widget build(BuildContext context) {
-
     //managementDataBase.copyDatabase();
-    managementDataBase.printDatabase('SELECT name FROM Prof');
+    // managementDataBase.printDatabase('SELECT name FROM Prof');
 
     return Scaffold(
       appBar: AppBar(title: Text('Внутренний круг')),
@@ -103,13 +101,17 @@ class _FirstCircleState extends State<FirstCircle> {
                 ),
                 AnimatedAlign(alignment: AlignmentDirectional(1, 0), duration: Duration(milliseconds: timing),
                 child: GestureDetector(
-                  onPanUpdate: (details) {
+                  onTap: () {
                     setState(() {
                       print("Is pressed!!!");
-                      if (details.delta.dx < 0) {
-                        widthAnimateCont = 324; // Свайп вправо
+
+                      if (checkPosition == true) {
+                        widthAnimateCont = 324;
+
+                        checkPosition = false;
                       } else {
-                        widthAnimateCont = 170; // Свайп влево
+                        widthAnimateCont = 170;
+                        checkPosition = true;
                       }
                     });
                   },
@@ -180,6 +182,135 @@ class _FirstCircleState extends State<FirstCircle> {
               ],
             ),
           ),
+          Container(
+            margin: EdgeInsets.only(right: 20, left: 20),
+            padding: EdgeInsets.only(top:20),
+            width: MediaQuery.of(context).size.width / 0.5,
+            height: MediaQuery.of(context).size.height / 1.6,
+            child: Column(
+              children: <Widget>[
+                Align(
+
+                  alignment: AlignmentDirectional(-0.8, 0),
+                  child: Text("Отчет о доходах", style: TextStyle(fontSize: 25),),
+                ),
+                Column(
+
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: (){
+                            print("Нажатие на Денежный поток!!!");
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,
+                                  width: 3
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            margin: EdgeInsets.only(top: 20, right: 40),
+                            width: 150,
+                            height: 100,
+                            child: Column(
+                              children: <Widget>[
+                                Align(alignment: AlignmentDirectional(-0.7, 0),
+                                child: Text("1512", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800),
+                                ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.7, 0),
+                                  child: Text("Доходы", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+                                )
+                              ],
+                            ),
+
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: (){
+                            print("Нажатие на Общие расходы!!!");
+                          },
+                          child:Container(
+                            margin: EdgeInsets.only(top: 20,),
+                            width: 150,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,
+                                  width: 3
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+
+
+                            ),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+
+                Align(
+                  alignment: AlignmentDirectional(-0.8, 0),
+                  child: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Text("Балансовый отчёт", style: TextStyle(fontSize: 25),),
+                  )
+
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: (){
+                        print("Нажатие на Денежный поток!!!");
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 3
+                          ),
+                            borderRadius: BorderRadius.circular(20),
+
+
+                        ),
+                        margin: EdgeInsets.only(top: 20, right: 40),
+                        width: 150,
+                        height: 100,
+
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: (){
+                        print("Нажатие на Общие расходы!!!");
+                      },
+                      child:Container(
+                        margin: EdgeInsets.only(top: 20,),
+                        width: 150,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.black,
+                              width: 3
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+
+
+                        ),
+                      ),
+                    )
+                  ],
+
+                )
+              ],
+            ),
+          )
+
 
         ],
       ),
