@@ -14,14 +14,10 @@ class DataPlayer{
     init(); // Вызов функции init в конструкторе
   }
 
-
-
   late String doxod;
   late String rashod;
   late String sberezh;
   late String passive;
-
-
 
 
   void fetchAndPrintSalaries() {

@@ -13,7 +13,7 @@ class FirstCircle extends StatefulWidget {
 class _FirstCircleState extends State<FirstCircle> {
   DataPlayer dataPlayer = new DataPlayer('Учитель');
 
-  double height_right_line = 25;
+  double height_right_line = 30;
   double width_right_line = double.maxFinite;
 
   int timing = 100;
@@ -23,7 +23,7 @@ class _FirstCircleState extends State<FirstCircle> {
   double animateCont = 140;
   double widthAnimateCont = 170;
   double maxWidth = 1.0;
-
+  double pos = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,7 @@ class _FirstCircleState extends State<FirstCircle> {
       appBar: AppBar(title: Text('Внутренний круг')),
       body: Column(
         children: [
+          // Контейнер для диаграм и цветных полосочек
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -45,6 +46,7 @@ class _FirstCircleState extends State<FirstCircle> {
             padding: EdgeInsets.all(15),
             child: Stack(
               children: <Widget>[
+                // Лево
                 Container(
                   margin: EdgeInsets.only(top: 10),
                   width: 154,
@@ -99,6 +101,7 @@ class _FirstCircleState extends State<FirstCircle> {
                     ],
                   ),
                 ),
+                // Право
                 AnimatedAlign(alignment: AlignmentDirectional(1, 0), duration: Duration(milliseconds: timing),
                 child: GestureDetector(
                   onTap: () {
@@ -106,11 +109,12 @@ class _FirstCircleState extends State<FirstCircle> {
                       print("Is pressed!!!");
 
                       if (checkPosition == true) {
-                        widthAnimateCont = 324;
+                         widthAnimateCont = 324;
 
                         checkPosition = false;
                       } else {
-                        widthAnimateCont = 170;
+                         widthAnimateCont = 170;
+
                         checkPosition = true;
                       }
                     });
@@ -127,51 +131,169 @@ class _FirstCircleState extends State<FirstCircle> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          AnimatedContainer(
-                            duration: Duration(milliseconds: timing),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Color.fromRGBO(241, 39, 99, 1),
-                            ),
-                            margin: EdgeInsets.only(left: 5.0, right: 5.0,bottom: 15),
-                            height: height_right_line,
-                            width: width_right_line,
+                          Stack(
+                           children: [
+
+                             AnimatedAlign(duration: Duration(milliseconds: timing),
+
+                               alignment: AlignmentDirectional(pos, 0),
+
+                               child: Container(
+                                 margin: EdgeInsets.only(bottom: 15),
+                                 padding: EdgeInsets.only(left: 5),
+                                 decoration: BoxDecoration(
+                                   borderRadius: BorderRadius.circular(15),
+                                   color: Color.fromRGBO(241, 39, 99, 1),
+                                 ),
+                                 height: height_right_line,
+                                 width: width_right_line,
+                                 child: Align(
+                                   alignment: AlignmentDirectional(-1, 0),
+                                   child: Text("Пассивный доход", style: TextStyle(color: Colors.black, fontSize: 15),),
+                                 ),
+                               ),
+
+                             ),
+                             Align(
+                               alignment: AlignmentDirectional(1, 0),
+                               child: Container(
+                                 padding: EdgeInsets.only(right: 5),
+                                 decoration: BoxDecoration(
+                                   borderRadius: BorderRadius.circular(15),
+                                   color: Color.fromRGBO(241, 39, 99, 1),
+                                 ),
+                                 height: height_right_line,
+                                 width: 170,
+                                 child: Align(
+                                 alignment: AlignmentDirectional(1, 0),
+                                  child: Text("15 000 000", style: TextStyle(color: Colors.black, fontSize: 15)),
+                                 )
+                               ),
+                             )
+
+                           ],
+                         ),
+                          Stack(
+                            children: [
+
+                              AnimatedAlign(duration: Duration(milliseconds: timing),
+                                alignment: AlignmentDirectional(pos, 0),
+
+                                child: Container(
+                                  margin: EdgeInsets.only(bottom: 15),
+                                  padding: EdgeInsets.only(left: 5),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: Color.fromRGBO(172, 251, 2, 1),
+                                  ),
+                                  height: height_right_line,
+                                  width: width_right_line,
+                                  child: Align(
+                                    alignment: AlignmentDirectional(-1, 0),
+                                    child: Text("Общий доход", style: TextStyle(color: Colors.black, fontSize: 15)),
+                                  ),
+                                ),
+
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(1, 0),
+                                child: Container(
+                                    padding: EdgeInsets.only(right: 5),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: Color.fromRGBO(172, 251, 2, 1),
+                                    ),
+                                    height: height_right_line,
+                                    width: 170,
+                                    child: Align(
+                                      alignment: AlignmentDirectional(1, 0),
+                                      child: Text("15 000 000", style: TextStyle(color: Colors.black, fontSize: 15)),
+                                    )
+                                ),
+                              )
+
+                            ],
                           ),
-                          AnimatedContainer(
-                            duration: Duration(milliseconds: timing),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Color.fromRGBO(172, 251, 2, 1),
-                            ),
-                            margin: EdgeInsets.only(
-                                left: 5.0, right: 5.0, bottom: 15),
-                            height: height_right_line,
-                            width: width_right_line,
-                            padding: EdgeInsets.all(15),
+                          Stack(
+                            children: [
+
+                              AnimatedAlign(duration: Duration(milliseconds: timing),
+                                alignment: AlignmentDirectional(pos, 0),
+
+                                child: Container(
+                                  margin: EdgeInsets.only(bottom: 15),
+                                  padding: EdgeInsets.only(left: 5),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: Color.fromRGBO(3, 247, 211, 1),
+                                  ),
+                                  height: height_right_line,
+                                  width: width_right_line,
+                                  child: Align(
+                                    alignment: AlignmentDirectional(-1, 0),
+                                    child: Text("Общие расходы", style: TextStyle(color: Colors.black, fontSize: 15)),
+                                  ),
+                                ),
+
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(1, 0),
+                                child: Container(
+                                    padding: EdgeInsets.only(right: 5),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: Color.fromRGBO(3, 247, 211, 1),
+                                    ),
+                                    height: height_right_line,
+                                    width: 170,
+                                    child: Align(
+                                      alignment: AlignmentDirectional(1, 0),
+                                      child: Text("15 000 000", style: TextStyle(color: Colors.black, fontSize: 15)),
+                                    )
+                                ),
+                              )
+
+                            ],
                           ),
-                          AnimatedContainer(
-                            duration: Duration(milliseconds: timing),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Color.fromRGBO(3, 247, 211, 1),
-                            ),
-                            margin: EdgeInsets.only(
-                                left: 5.0, right: 5.0, bottom: 15),
-                            height: height_right_line,
-                            width: width_right_line,
-                            padding: EdgeInsets.all(15),
-                          ),
-                          AnimatedContainer(
-                            duration: Duration(milliseconds: timing),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Color.fromRGBO(255, 100, 0, 1),
-                            ),
-                            margin: EdgeInsets.only(
-                                left: 5.0, right: 5.0),
-                            height: height_right_line,
-                            width: width_right_line,
-                            padding: EdgeInsets.all(15),
+                          Stack(
+                            children: [
+
+                              AnimatedAlign(duration: Duration(milliseconds: timing),
+                                alignment: AlignmentDirectional(pos, 0),
+
+                                child: Container(
+                                  padding: EdgeInsets.only(left: 5),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: Color.fromRGBO(255, 100, 0, 1),
+                                  ),
+                                  height: height_right_line,
+                                  width: width_right_line,
+                                  child: Align(
+                                    alignment: AlignmentDirectional(-1, 0),
+                                    child: Text("Денежный поток", style: TextStyle(color: Colors.black, fontSize: 15)),
+                                  ),
+                                ),
+
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(1, 0),
+                                child: Container(
+                                    padding: EdgeInsets.only(right: 5),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: Color.fromRGBO(255, 100, 0, 1),
+                                    ),
+                                    height: height_right_line,
+                                    width: 170,
+                                    child: Align(
+                                      alignment: AlignmentDirectional(1, 0),
+                                      child: Text("15 000 000", style: TextStyle(color: Colors.black, fontSize: 15)),
+                                    )
+                                ),
+                              )
+
+                            ],
                           ),
                         ],
                       ),
@@ -182,17 +304,19 @@ class _FirstCircleState extends State<FirstCircle> {
               ],
             ),
           ),
+          // Контейнер для кнопок
           Container(
+
             margin: EdgeInsets.only(right: 20, left: 20),
             padding: EdgeInsets.only(top:20),
             width: MediaQuery.of(context).size.width / 0.5,
-            height: MediaQuery.of(context).size.height / 1.6,
+            height: MediaQuery.of(context).size.height / 2.2,
             child: Column(
               children: <Widget>[
                 Align(
 
                   alignment: AlignmentDirectional(-0.8, 0),
-                  child: Text("Отчет о доходах", style: TextStyle(fontSize: 25),),
+                  child: Text("Отчет о доходах", style: TextStyle(fontSize: 25)),
                 ),
                 Column(
 
@@ -247,6 +371,18 @@ class _FirstCircleState extends State<FirstCircle> {
 
 
                             ),
+                            child: Column(
+                              children: <Widget>[
+                                Align(alignment: AlignmentDirectional(-0.7, 0),
+                                  child: Text("1512", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.7, 0),
+                                  child: Text("Расходы", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+                                )
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -267,7 +403,7 @@ class _FirstCircleState extends State<FirstCircle> {
                   children: <Widget>[
                     GestureDetector(
                       onTap: (){
-                        print("Нажатие на Денежный поток!!!");
+                        print("Нажатие на Сбережения!!!");
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -279,6 +415,18 @@ class _FirstCircleState extends State<FirstCircle> {
 
 
                         ),
+                        child: Column(
+                          children: <Widget>[
+                            Align(alignment: AlignmentDirectional(-0.7, 0),
+                              child: Text("1512", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.7, 0),
+                              child: Text("Активы", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+                            )
+                          ],
+                        ),
                         margin: EdgeInsets.only(top: 20, right: 40),
                         width: 150,
                         height: 100,
@@ -287,7 +435,7 @@ class _FirstCircleState extends State<FirstCircle> {
                     ),
                     GestureDetector(
                       onTap: (){
-                        print("Нажатие на Общие расходы!!!");
+                        print("Нажатие на Ежемесячный платеж!!!");
                       },
                       child:Container(
                         margin: EdgeInsets.only(top: 20,),
@@ -302,6 +450,18 @@ class _FirstCircleState extends State<FirstCircle> {
 
 
                         ),
+                        child: Column(
+                          children: <Widget>[
+                            Align(alignment: AlignmentDirectional(-0.7, 0),
+                              child: Text("1512", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.7, 0),
+                              child: Text("Пассивы", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],
@@ -309,9 +469,27 @@ class _FirstCircleState extends State<FirstCircle> {
                 )
               ],
             ),
+          ),
+
+          Container(
+            margin: EdgeInsets.only(left: 20.0, right: 20.0),
+            width: MediaQuery.of(context).size.width / 0.5,
+            height: MediaQuery.of(context).size.height / 5,
+            child: Align(
+              alignment: Alignment.center,
+              child: new LinearPercentIndicator(
+
+                lineHeight: 60,
+                animation: true,
+                animationDuration: 2500,
+                percent: 0.8,
+                center: Text("80.0%", style: TextStyle(fontSize: 30, color: Colors.white),),
+                barRadius: Radius.circular(10),
+                progressColor: Color.fromRGBO(0, 0, 0, 1),
+                backgroundColor: Color.fromRGBO(0, 0, 0, 0.3),
+              ),
+            ),
           )
-
-
         ],
       ),
     );
