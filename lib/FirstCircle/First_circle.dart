@@ -16,7 +16,7 @@ class _FirstCircleState extends State<FirstCircle> {
   double height_right_line = 30;
   double width_right_line = double.maxFinite;
 
-  int timing = 100;
+  int timing = 250;
 
   double positionRight = 1;
   bool checkPosition = true;
@@ -32,6 +32,8 @@ class _FirstCircleState extends State<FirstCircle> {
   double _buttonHeight = 50.0;
   double _screenWidth = 0.0;
   double _screenHeight = 0.0;
+
+  bool _visible = true;
 
 
   @override
@@ -91,77 +93,83 @@ class _FirstCircleState extends State<FirstCircle> {
               child: Stack(
                 children: <Widget>[
                   // Лево
-                  Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    width: 154,
-                    height: 154,
-                    // color: Colors.green,
-                    child: Stack(
-                      children: <Widget>[
-                        Align(
-                          child: CircularPercentIndicator(
-                            radius: 70,
-                            lineWidth: 7,
-                            percent: 0.8,
-                            animation: true,
-                            animationDuration: 2000,
-                            circularStrokeCap: CircularStrokeCap.round,
-                            progressColor: const Color.fromRGBO(241, 39, 99, 1),
-                            backgroundColor: const Color.fromRGBO(241, 39, 99, 0.3),
+                  AnimatedOpacity(
+                    opacity: _visible ? 1.0 : 0.0,
+                    duration: Duration(milliseconds: timing),
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      width: 154,
+                      height: 154,
+                      // color: Colors.green,
+                      child: Stack(
+                        children: <Widget>[
+                          Align(
+                            child: CircularPercentIndicator(
+                              radius: 70,
+                              lineWidth: 7,
+                              percent: 0.8,
+                              animation: true,
+                              animationDuration: 2000,
+                              circularStrokeCap: CircularStrokeCap.round,
+                              progressColor: const Color.fromRGBO(241, 39, 99, 1),
+                              backgroundColor: const Color.fromRGBO(241, 39, 99, 0.3),
+                            ),
                           ),
-                        ),
-                        Align(
-                          child: CircularPercentIndicator(
-                            radius: 60,
-                            lineWidth: 7,
-                            percent: 0.6,
-                            animation: true,
-                            animationDuration: 2000,
-                            circularStrokeCap: CircularStrokeCap.round,
-                            progressColor: const Color.fromRGBO(172, 251, 2, 1),
-                            backgroundColor: const Color.fromRGBO(172, 251, 2, 0.3),
+                          Align(
+                            child: CircularPercentIndicator(
+                              radius: 60,
+                              lineWidth: 7,
+                              percent: 0.6,
+                              animation: true,
+                              animationDuration: 2000,
+                              circularStrokeCap: CircularStrokeCap.round,
+                              progressColor: const Color.fromRGBO(172, 251, 2, 1),
+                              backgroundColor: const Color.fromRGBO(172, 251, 2, 0.3),
+                            ),
                           ),
-                        ),
-                        Align(
-                          child: CircularPercentIndicator(
-                            radius: 50,
-                            lineWidth: 7,
-                            percent: 0.4,
-                            animation: true,
-                            animationDuration: 2000,
-                            circularStrokeCap: CircularStrokeCap.round,
-                            progressColor: const Color.fromRGBO(3, 247, 211, 1),
-                            backgroundColor: const Color.fromRGBO(3, 247, 211, 0.3),
+                          Align(
+                            child: CircularPercentIndicator(
+                              radius: 50,
+                              lineWidth: 7,
+                              percent: 0.4,
+                              animation: true,
+                              animationDuration: 2000,
+                              circularStrokeCap: CircularStrokeCap.round,
+                              progressColor: const Color.fromRGBO(3, 247, 211, 1),
+                              backgroundColor: const Color.fromRGBO(3, 247, 211, 0.3),
+                            ),
                           ),
-                        ),
-                        Align(
-                          child: CircularPercentIndicator(
-                            radius: 40,
-                            lineWidth: 7,
-                            percent: 0.2,
-                            animation: true,
-                            animationDuration: 2000,
-                            circularStrokeCap: CircularStrokeCap.round,
-                            progressColor: const Color.fromRGBO(255, 100, 0, 1),
-                            backgroundColor: const Color.fromRGBO(255, 100, 0, 0.3),
+                          Align(
+                            child: CircularPercentIndicator(
+                              radius: 40,
+                              lineWidth: 7,
+                              percent: 0.2,
+                              animation: true,
+                              animationDuration: 2000,
+                              circularStrokeCap: CircularStrokeCap.round,
+                              progressColor: const Color.fromRGBO(255, 100, 0, 1),
+                              backgroundColor: const Color.fromRGBO(255, 100, 0, 0.3),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   // Право
                   AnimatedAlign(
                     alignment: const AlignmentDirectional(1, 0),
                     duration: Duration(milliseconds: timing),
+                    curve: Curves.easeInOutQuint,
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          print("Is pressed!!!");
                           if (checkPosition == true) {
-                            widthAnimateCont = 324;
+                            widthAnimateCont = MediaQuery.of(context).size.width;
+                            _visible = false;
                             checkPosition = false;
                           } else {
                             widthAnimateCont = 170;
+                            _visible = true;
                             checkPosition = true;
                           }
                         });
