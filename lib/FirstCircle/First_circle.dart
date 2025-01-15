@@ -183,11 +183,8 @@ class _FirstCircleState extends State<FirstCircle> {
                             children: <Widget>[
                               Stack(
                                 children: [
-
                                   AnimatedAlign(duration: Duration(milliseconds: timing),
-
                                     alignment: AlignmentDirectional(pos, 0),
-
                                     child: Container(
                                       margin: EdgeInsets.only(bottom: 15),
                                       padding: EdgeInsets.only(left: 5),
@@ -220,7 +217,6 @@ class _FirstCircleState extends State<FirstCircle> {
                                         )
                                     ),
                                   )
-
                                 ],
                               ),
                               Stack(
@@ -243,7 +239,6 @@ class _FirstCircleState extends State<FirstCircle> {
                                         child: Text("Общий доход", style: TextStyle(color: Colors.black, fontSize: 15)),
                                       ),
                                     ),
-
                                   ),
                                   Align(
                                     alignment: AlignmentDirectional(1, 0),
@@ -284,7 +279,6 @@ class _FirstCircleState extends State<FirstCircle> {
                                         child: Text("Общие расходы", style: TextStyle(color: Colors.black, fontSize: 15)),
                                       ),
                                     ),
-
                                   ),
                                   Align(
                                     alignment: AlignmentDirectional(1, 0),
@@ -302,7 +296,6 @@ class _FirstCircleState extends State<FirstCircle> {
                                         )
                                     ),
                                   )
-
                                 ],
                               ),
                               Stack(
@@ -324,7 +317,6 @@ class _FirstCircleState extends State<FirstCircle> {
                                         child: Text("Денежный поток", style: TextStyle(color: Colors.black, fontSize: 15)),
                                       ),
                                     ),
-
                                   ),
                                   Align(
                                     alignment: AlignmentDirectional(1, 0),
@@ -342,7 +334,6 @@ class _FirstCircleState extends State<FirstCircle> {
                                         )
                                     ),
                                   )
-
                                 ],
                               ),
                             ],
@@ -442,15 +433,10 @@ class _FirstCircleState extends State<FirstCircle> {
                             ),
                           )
                       ),
-
-
-
                     ],
                   )
-
               ),
           ),
-
         ],
       ),
     );
