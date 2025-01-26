@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:ratrace/servises/ManagementDataBase.dart';
 
 class DataPlayer{
@@ -32,6 +28,7 @@ class DataPlayer{
       print('Error fetching data: $error');
     });
   }
+
   void init() {
     managementDataBase.printDatabase("SELECT * FROM Prof WHERE Name='$character'")
         .then((List<Map> list){
@@ -43,6 +40,4 @@ class DataPlayer{
     });
 
   }
-
-
 }

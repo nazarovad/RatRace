@@ -1,27 +1,26 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-
-
 class ManagementDataBase {
-  String dataBase_Name;
+  String dataBaseName;
 
-
-  ManagementDataBase(this.dataBase_Name);
+  ManagementDataBase(this.dataBaseName);
 
   Future<String> getDatabase() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    return join(documentsDirectory.path, dataBase_Name);
+    return join(documentsDirectory.path, dataBaseName);
   }
   Future<void> deleteData() async {
     String path = await getDatabase();
     print("1)$path");
 
     final directory = await getApplicationDocumentsDirectory();
-    final dbPath = '${directory.path}/$dataBase_Name';
+    final dbPath = '${directory.path}/$dataBaseName';
 
     final file = File(dbPath);
     if (await file.exists()) {
@@ -40,7 +39,7 @@ class ManagementDataBase {
     String path = await getDatabase();
 
     if (FileSystemEntity.typeSync(path) == FileSystemEntityType.notFound) {
-      ByteData data = await rootBundle.load('assets/database/$dataBase_Name');
+      ByteData data = await rootBundle.load('assets/database/$dataBaseName');
       List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       File file = File(path);
       await file.writeAsBytes(bytes);

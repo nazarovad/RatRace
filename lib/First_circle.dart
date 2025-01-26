@@ -11,14 +11,14 @@ class FirstCircle extends StatefulWidget {
 }
 
 class _FirstCircleState extends State<FirstCircle> {
-  double height_right_line = 25;
+  double heightRightLine = 25;
 
-  double width_right_line = 142;
+  double widthRightLine = 142;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Внутренний круг')),
+      appBar: AppBar(title: const Text('Внутренний круг')),
       body: Column(
         children: [
           Container(
@@ -27,9 +27,9 @@ class _FirstCircleState extends State<FirstCircle> {
                   BorderRadius.circular(20), // <= No more error here :)
               color: Colors.black,
             ),
-            margin: EdgeInsets.only(left: 20.0, right: 20.0),
+            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
             height: 200,
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: Row(
 
               children: [
@@ -45,8 +45,8 @@ class _FirstCircleState extends State<FirstCircle> {
                           percent: 0.8,
                           animation: true,
                           circularStrokeCap: CircularStrokeCap.round,
-                          progressColor: Color.fromRGBO(241, 39, 99,1),
-                          backgroundColor: Color.fromRGBO(241, 39, 99,0.3),
+                          progressColor: const Color.fromRGBO(241, 39, 99,1),
+                          backgroundColor: const Color.fromRGBO(241, 39, 99,0.3),
                         )
                       ),
                       Align(
@@ -57,8 +57,8 @@ class _FirstCircleState extends State<FirstCircle> {
                           percent: 0.6,
                           animation: true,
                           circularStrokeCap: CircularStrokeCap.round,
-                          progressColor: Color.fromRGBO(172, 251, 2,1),
-                          backgroundColor: Color.fromRGBO(172, 251, 2,0.3),
+                          progressColor: const Color.fromRGBO(172, 251, 2,1),
+                          backgroundColor: const Color.fromRGBO(172, 251, 2,0.3),
                         ),
                       ),
                       Align (
@@ -69,8 +69,8 @@ class _FirstCircleState extends State<FirstCircle> {
                           percent: 0.4,
                           animation: true,
                           circularStrokeCap: CircularStrokeCap.round,
-                          progressColor: Color.fromRGBO(3, 247, 211,1),
-                          backgroundColor: Color.fromRGBO(3, 247, 211,0.3),
+                          progressColor: const Color.fromRGBO(3, 247, 211,1),
+                          backgroundColor: const Color.fromRGBO(3, 247, 211,0.3),
                           ),
                       ),
                       Align(
@@ -81,8 +81,8 @@ class _FirstCircleState extends State<FirstCircle> {
                           percent: 0.2,
                           animation: true,
                           circularStrokeCap: CircularStrokeCap.round,
-                          progressColor: Color.fromRGBO(255, 100, 0,1),
-                          backgroundColor: Color.fromRGBO(255, 100, 0,0.3),
+                          progressColor: const Color.fromRGBO(255, 100, 0,1),
+                          backgroundColor: const Color.fromRGBO(255, 100, 0,0.3),
                         ),
                       ),
                     ],
@@ -97,44 +97,44 @@ class _FirstCircleState extends State<FirstCircle> {
                         decoration: BoxDecoration(
                           borderRadius:
                           BorderRadius.circular(15), // <= No more error here :)
-                          color: Color.fromRGBO(241, 39, 99,1),
+                          color: const Color.fromRGBO(241, 39, 99,1),
                         ),
-                        margin: EdgeInsets.only( bottom: 15),
-                        height: height_right_line,
-                        width: width_right_line,
+                        margin: const EdgeInsets.only( bottom: 15),
+                        height: heightRightLine,
+                        width: widthRightLine,
                       ),
                       Container(
                         decoration: BoxDecoration(
                           borderRadius:
                           BorderRadius.circular(15), // <= No more error here :)
-                          color: Color.fromRGBO(172, 251, 2,1),
+                          color: const Color.fromRGBO(172, 251, 2,1),
                         ),
-                        margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 15),
-                        height: height_right_line,
-                        width: width_right_line,
-                        padding: EdgeInsets.all(15),
+                        margin: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 15),
+                        height: heightRightLine,
+                        width: widthRightLine,
+                        padding: const EdgeInsets.all(15),
                       ),
                       Container(
                         decoration: BoxDecoration(
                           borderRadius:
                           BorderRadius.circular(15), // <= No more error here :)
-                          color: Color.fromRGBO(3, 247, 211,1),
+                          color: const Color.fromRGBO(3, 247, 211,1),
                         ),
-                        margin: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 15),
-                        height: height_right_line,
-                        width: width_right_line,
-                        padding: EdgeInsets.all(15),
+                        margin: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 15),
+                        height: heightRightLine,
+                        width: widthRightLine,
+                        padding: const EdgeInsets.all(15),
                       ),
                       Container(
                         decoration: BoxDecoration(
                           borderRadius:
                           BorderRadius.circular(15), // <= No more error here :)
-                          color: Color.fromRGBO(255, 100, 0,1),
+                          color: const Color.fromRGBO(255, 100, 0,1),
                         ),
-                        margin: EdgeInsets.only(left: 20.0, right: 20.0),
-                        height: height_right_line,
-                        width: width_right_line,
-                        padding: EdgeInsets.all(15),
+                        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        height: heightRightLine,
+                        width: widthRightLine,
+                        padding: const EdgeInsets.all(15),
                       )
                     ],
                   ),

@@ -28,8 +28,8 @@ class _FirstCircleState extends State<FirstCircle> {
   double buttonWidth = 150;
   double buttonHeight = 100;
   Rect _containerRect = Rect.zero;
-  double _buttonWidth = 100.0;
-  double _buttonHeight = 50.0;
+  final double _buttonWidth = 100.0;
+  final double _buttonHeight = 50.0;
   double _screenWidth = 0.0;
   double _screenHeight = 0.0;
 
