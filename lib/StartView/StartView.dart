@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'CustomPageViewScrollPhisics.dart';
-import '../First_circle.dart';
-
+import '../FirstCircle/First_circle.dart';
 class StartView extends StatefulWidget {
   const StartView({super.key, required this.title});
 
@@ -57,7 +56,7 @@ class _StartViewState extends State<StartView> {
                 margin: const EdgeInsets.all(9),
                 decoration: BoxDecoration (
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.amber,
+                  color: Colors.blue,
                   image: DecorationImage (
                     image: AssetImage(_images[index]),
                     fit: BoxFit.cover
