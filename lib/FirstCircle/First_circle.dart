@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:ratrace/FirstCircle/DataPlayer.dart';
+import 'package:ratrace/slidingclippednavbar/sliding_clipped_nav_bar.dart';
 
 class FirstCircle extends StatefulWidget {
   const FirstCircle({super.key});
@@ -21,12 +22,17 @@ class _FirstCircleState extends State<FirstCircle> {
   double widthAnimateCont = 170;
   double maxWidth = 1.0;
   bool _visible = true;
+  late PageController _pageController;
+  int selectedIndex = 0;
 
   @override
   void initState() {
     super.initState();
+    _pageController = PageController(initialPage: selectedIndex);
     WidgetsBinding.instance.addPostFrameCallback((_) {
+
       _getScreenSize();
+
     });
   }
 
@@ -38,15 +44,88 @@ class _FirstCircleState extends State<FirstCircle> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(title: const Text('Внутренний круг')),
-      body: Container(
-        child: Column(
-          children: [
-            _buildChartContainer(),
-            _buildReportButtons(),
-          ],
-        ),
+      body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: _pageController,
+        children: [
+          Container(alignment: Alignment.center,
+            child: const Icon(
+              Icons.money_off_outlined,
+              size: 56,
+              color: Color.fromRGBO(255, 100, 0, 1),
+            ),
+          ),
+          Container(alignment: Alignment.center,
+            child: const Icon(
+              Icons.wallet_outlined,
+              size: 56,
+              color: Color.fromRGBO(3, 247, 211, 1),
+            ),
+          ),
+          Container(
+            child: Column(
+              children: [
+                _buildChartContainer(),
+                _buildReportButtons(),
+              ],
+            ),
+          ),
+          Container(alignment: Alignment.center,
+            child: const Icon(
+              Icons.apartment_outlined,
+              size: 56,
+              color: Color.fromRGBO(172, 251, 2, 1),
+            ),
+          ),
+          Container(alignment: Alignment.center,
+            child: const Icon(
+              Icons.trending_up_outlined,
+              size: 56,
+              color: Color.fromRGBO(241, 39, 99, 1),
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: SlidingClippedNavBar.colorful(
+        backgroundColor: Color.fromRGBO(28, 33, 53, 1),
+        onButtonPressed: changePage,
+        iconSize: 30,
+        selectedIndex: selectedIndex,
+        barItems: [
+          BarItem(
+            title: "Расходы",
+            icon: Icons.money_off_outlined,
+            activeColor: Color.fromRGBO(255, 100, 0, 1),
+            inactiveColor: Color.fromRGBO(255, 100, 0, 0.3),
+          ),
+          BarItem(
+              title: "Активы",
+              icon: Icons.wallet_outlined,
+              activeColor: Color.fromRGBO(3, 247, 211, 1),
+              inactiveColor: Color.fromRGBO(3, 247, 211, 0.3)
+          ),
+          BarItem(
+              title: "Главная",
+              icon: Icons.home_outlined,
+              activeColor: Color.fromRGBO(195, 26, 237, 1),
+              inactiveColor: Color.fromRGBO(195, 26, 237, 0.3)
+          ),
+          BarItem(
+            title: "Пассивы",
+            icon: Icons.apartment_outlined,
+            activeColor: Color.fromRGBO(172, 251, 2, 1),
+            inactiveColor: Color.fromRGBO(172, 251, 2, 0.3),
+          ),
+          BarItem(
+              title: "Рынок",
+              icon: Icons.trending_up_outlined,
+              activeColor: Color.fromRGBO(241, 39, 99, 1),
+              inactiveColor: Color.fromRGBO(241, 39, 99, 0.3)
+          ),
+        ],
       ),
     );
   }
@@ -268,5 +347,15 @@ class _FirstCircleState extends State<FirstCircle> {
       ),
     );
   }
+
+  void changePage(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+    _pageController.animateToPage(selectedIndex,
+        duration: Duration(milliseconds: timing), curve: Curves.easeOutQuad);
+  }
+
+
 }
 
