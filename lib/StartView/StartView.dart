@@ -24,14 +24,18 @@ class _StartViewState extends State<StartView> {
     "Учитель",
   ];
 
+  final TextStyle p1 = const TextStyle(
+    fontSize: 25,
+  );
+
   PageController controller = PageController(viewportFraction: 0.9, initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Column(
         children: [
-          Container (
+          Container(
             margin: const EdgeInsets.only(left: 30, top: 10),
             child: const Text(
               'Профессия',
@@ -42,21 +46,76 @@ class _StartViewState extends State<StartView> {
             ),
           ),
           SizedBox(
-            height: 500,
+            height: 450,
             child: PageView.builder(
               padEnds: true,
               controller: controller,
               physics: const CustomPageViewScrollPhysics(),
               itemCount: _images.length,
-              itemBuilder: (_, index) => Container (
+              itemBuilder: (_, index) =>
+              Container(
                 margin: const EdgeInsets.all(9),
-                decoration: BoxDecoration (
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.blue,
-                  image: DecorationImage (
-                    image: AssetImage(_images[index]),
-                    fit: BoxFit.cover
-                  )
+                  // image: DecorationImage(
+                  //   image: AssetImage(_images[index]),
+                  //   fit: BoxFit.cover
+                  // )
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  child: Column(
+                    spacing: 20,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        spacing: 20,
+                        children: [
+                          Container(
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.red,
+                              image: DecorationImage(
+                                image: AssetImage(_images[index]),
+                                fit: BoxFit.cover
+                              )
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Зарплата", style: p1,),
+                              Text("0123")
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Общие расходы", style: p1),
+                          Text("1232")
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Расход детей", style: p1),
+                          Text("1232")
+                        ]
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Сбережения", style: p1),
+                          Text("1232")
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
