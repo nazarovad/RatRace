@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ratrace/StartView/StartView.dart';
 import 'package:flutter/services.dart';
+import 'servises/tema.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,11 +17,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.22
   @override
   Widget build(BuildContext context) {
+    MyThemeData myThemeData = new MyThemeData();
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: const ColorScheme.light()
-      ),
+      theme: myThemeData.darkschem(),
       home: const StartView(title: 'Выбор профессии'),
     );
   }
