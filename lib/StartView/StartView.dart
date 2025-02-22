@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'CustomPageViewScrollPhisics.dart';
 import '../FirstCircle/First_circle.dart';
+import 'package:flutter_swipe_button/flutter_swipe_button.dart';
+
 class StartView extends StatefulWidget {
   const StartView({super.key, required this.title});
 
@@ -30,6 +32,15 @@ class _StartViewState extends State<StartView> {
 
   PageController controller = PageController(viewportFraction: 0.9, initialPage: 0);
 
+  int index = 0;
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +63,10 @@ class _StartViewState extends State<StartView> {
               controller: controller,
               physics: const CustomPageViewScrollPhysics(),
               itemCount: _images.length,
+              onPageChanged: (indexPage) {
+                index = indexPage;
+                print(index);
+              },
               itemBuilder: (_, index) =>
               Container(
                 margin: const EdgeInsets.all(9),
@@ -88,7 +103,7 @@ class _StartViewState extends State<StartView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("Зарплата", style: p1,),
-                              Text("0123")
+                              const Text("0123")
                             ],
                           )
                         ],
@@ -97,21 +112,21 @@ class _StartViewState extends State<StartView> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Общие расходы", style: p1),
-                          Text("1232")
+                          const Text("1232")
                         ],
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Расход детей", style: p1),
-                          Text("1232")
+                          const Text("1232")
                         ]
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Сбережения", style: p1),
-                          Text("1232")
+                          const Text("1232")
                         ],
                       ),
                     ],
@@ -138,22 +153,26 @@ class _StartViewState extends State<StartView> {
             )
           ),
           Center(
-            child: ElevatedButton(
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.black12),
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.amber),
+            child: SwipeButton.expand(
+              thumb: const Icon(
+                Icons.double_arrow_rounded,
+                color: Colors.white,
               ),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => FirstCircle()));
-              },
-              child: const Text(
-                'Выбрать',
+              child: Text(
+                "Выборать",
                 style: TextStyle(
-                  fontSize: 23,
-                  color: Colors.black87
+                  color: Colors.red,
                 ),
               ),
-            ),
+              activeThumbColor: Colors.red,
+              activeTrackColor: Colors.grey.shade300,
+              onSwipe: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => FirstCircle(indexProfession: index)
+                  )
+                );
+              },
+            )
           ),
         ],
       )

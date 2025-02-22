@@ -4,7 +4,8 @@ import 'package:ratrace/FirstCircle/DataPlayer.dart';
 import 'package:ratrace/slidingclippednavbar/sliding_clipped_nav_bar.dart';
 
 class FirstCircle extends StatefulWidget {
-  const FirstCircle({super.key});
+  const FirstCircle({super.key, required this.indexProfession});
+  final int indexProfession;
 
   @override
   State<FirstCircle> createState() => _FirstCircleState();
@@ -50,6 +51,7 @@ class _FirstCircleState extends State<FirstCircle> {
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
+        scrollDirection: Axis.vertical,
         children: [
           Container(alignment: Alignment.center,
             child: const Icon(
@@ -90,7 +92,7 @@ class _FirstCircleState extends State<FirstCircle> {
         ],
       ),
       bottomNavigationBar: SlidingClippedNavBar.colorful(
-        backgroundColor: Color.fromRGBO(28, 33, 53, 1),
+        backgroundColor: const Color.fromRGBO(28, 33, 53, 1),
         onButtonPressed: changePage,
         iconSize: 30,
         selectedIndex: selectedIndex,
@@ -98,32 +100,32 @@ class _FirstCircleState extends State<FirstCircle> {
           BarItem(
             title: "Расходы",
             icon: Icons.money_off_outlined,
-            activeColor: Color.fromRGBO(255, 100, 0, 1),
-            inactiveColor: Color.fromRGBO(255, 100, 0, 0.3),
+            activeColor: const Color.fromRGBO(255, 100, 0, 1),
+            inactiveColor: const Color.fromRGBO(255, 100, 0, 0.3),
           ),
           BarItem(
               title: "Активы",
               icon: Icons.wallet_outlined,
-              activeColor: Color.fromRGBO(3, 247, 211, 1),
-              inactiveColor: Color.fromRGBO(3, 247, 211, 0.3)
+              activeColor: const Color.fromRGBO(3, 247, 211, 1),
+              inactiveColor: const Color.fromRGBO(3, 247, 211, 0.3)
           ),
           BarItem(
               title: "Главная",
               icon: Icons.home_outlined,
-              activeColor: Color.fromRGBO(195, 26, 237, 1),
-              inactiveColor: Color.fromRGBO(195, 26, 237, 0.3)
+              activeColor: const Color.fromRGBO(195, 26, 237, 1),
+              inactiveColor: const Color.fromRGBO(195, 26, 237, 0.3)
           ),
           BarItem(
             title: "Пассивы",
             icon: Icons.apartment_outlined,
-            activeColor: Color.fromRGBO(172, 251, 2, 1),
-            inactiveColor: Color.fromRGBO(172, 251, 2, 0.3),
+            activeColor: const Color.fromRGBO(172, 251, 2, 1),
+            inactiveColor: const Color.fromRGBO(172, 251, 2, 0.3),
           ),
           BarItem(
               title: "Рынок",
               icon: Icons.trending_up_outlined,
-              activeColor: Color.fromRGBO(241, 39, 99, 1),
-              inactiveColor: Color.fromRGBO(241, 39, 99, 0.3)
+              activeColor: const Color.fromRGBO(241, 39, 99, 1),
+              inactiveColor: const Color.fromRGBO(241, 39, 99, 0.3)
           ),
         ],
       ),
@@ -247,7 +249,7 @@ class _FirstCircleState extends State<FirstCircle> {
           height: heightRightLine,
           width: widthRightLine,
           child: Align(
-            alignment: AlignmentDirectional(-1, 0),
+            alignment: const AlignmentDirectional(-1, 0),
             child: Text(
               title,
               style: const TextStyle(color: Colors.black, fontSize: 15),
@@ -265,7 +267,7 @@ class _FirstCircleState extends State<FirstCircle> {
             height: heightRightLine,
             width: 170,
             child: Align(
-              alignment: AlignmentDirectional(1, 0),
+              alignment: const AlignmentDirectional(1, 0),
               child: Text(value, style: const TextStyle(color: Colors.black, fontSize: 15)),
             ),
           ),
@@ -295,7 +297,7 @@ class _FirstCircleState extends State<FirstCircle> {
     return Padding(
       padding: const EdgeInsets.only(left: 15, top: 10),
       child: Align(
-        alignment: AlignmentDirectional(-1, 0),
+        alignment: const AlignmentDirectional(-1, 0),
         child: Text(title, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w500)),
       ),
     );
@@ -333,11 +335,11 @@ class _FirstCircleState extends State<FirstCircle> {
             child: Column(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-0.7, 0),
+                  alignment: const AlignmentDirectional(-0.7, 0),
                   child: Text(value, style: const TextStyle(fontSize: 40, fontWeight: FontWeight.w800)),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.7, 0),
+                  alignment: const AlignmentDirectional(0.7, 0),
                   child: Text(label, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
                 ),
               ],
